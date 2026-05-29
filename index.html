@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolao Landau 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Bolao Landau 2026</h1>
+    <p class="subtitle">Copa do Mundo - Sistema Oficial de Apuracao</p>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('apuracao')">Apurar Rodada</button>
+      <button class="tab" onclick="showTab('ranking')">Ranking</button>
+      <button class="tab" onclick="showTab('participantes')">Participantes</button>
+      <button class="tab" onclick="showTab('historico')">Historico</button>
+    </div>
+
+    <!-- ABA: APURACAO -->
+    <section id="tab-apuracao" class="tab-content active">
+      <div class="card">
+        <h2>Resultado Oficial</h2>
+        <div class="jogo-form">
+          <div class="time-grupo">
+            <label>Time da Casa</label>
+            <input type="text" id="time-casa" placeholder="Ex: Brasil" />
+            <input type="number" id="gols-casa" min="0" max="20" placeholder="Gols" />
+          </div>
+          <div class="vs">X</div>
+          <div class="time-grupo right">
+            <label>Time de Fora</label>
+            <input type="text" id="time-fora" placeholder="Ex: Argentina" />
+            <input type="number" id="gols-fora" min="0" max="20" placeholder="Gols" />
+          </div>
+        </div>
+        <input type="text" id="nome-rodada" placeholder="Nome da rodada (ex: Fase de Grupos - Rodada 1)" class="input-full" />
+      </div>
+
+      <div class="card">
+        <h2>Palpites dos Participantes</h2>
+        <div id="lista-palpites"></div>
+        <button class="btn-secundario" onclick="adicionarLinhaPalpite()">+ Adicionar participante</button>
+      </div>
+
+      <div class="acoes">
+        <button class="btn-primario" onclick="apurarRodada()">Apurar Rodada</button>
+        <button class="btn-secundario" onclick="limparApuracao()">Limpar</button>
+      </div>
+
+      <div id="resultado-apuracao" class="card resultado hidden"></div>
+    </section>
+
+    <!-- ABA: RANKING -->
+    <section id="tab-ranking" class="tab-content hidden">
+      <div class="card">
+        <h2>Classificacao Geral</h2>
+        <div id="tabela-ranking"><p class="vazio">Nenhuma rodada apurada ainda.</p></div>
+        <div class="acoes">
+          <button class="btn-secundario" onclick="exportarRanking()">Exportar JSON</button>
+          <button class="btn-danger" onclick="resetarRanking()">Zerar Ranking</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA: PARTICIPANTES -->
+    <section id="tab-participantes" class="tab-content hidden">
+      <div class="card">
+        <h2>Gerenciar Participantes</h2>
+        <div class="add-participante">
+          <input type="text" id="novo-participante" placeholder="Nome do participante" />
+          <button class="btn-primario" onclick="adicionarParticipante()">Adicionar</button>
+        </div>
+        <div id="lista-participantes-gerenciar"></div>
+      </div>
+    </section>
+
+    <!-- ABA: HISTORICO -->
+    <section id="tab-historico" class="tab-content hidden">
+      <div class="card">
+        <h2>Historico de Rodadas</h2>
+        <div id="lista-historico"><p class="vazio">Nenhuma rodada registrada ainda.</p></div>
+        <div class="acoes">
+          <button class="btn-danger" onclick="limparHistorico()">Limpar Historico</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bolao Landau 2026 - Feito com amor para a familia</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
